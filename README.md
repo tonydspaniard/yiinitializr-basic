@@ -31,7 +31,7 @@ use Yiinitializr\Helpers\Initializer;
 Initializer::create('./../app', 'main', array('common', 'env', 'local'))->run();
 ```
 
-For more information about Yiinitializr please check it at [its github repo](https://github/2amigos/yiinitializr).
+For more information about Yiinitializr please check it at [its github repo](https://github.com/2amigos/yiinitializr).
 
 ## Overall Structure
 
