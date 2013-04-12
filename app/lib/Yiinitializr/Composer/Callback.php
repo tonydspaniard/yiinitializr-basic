@@ -25,16 +25,16 @@
  *
  * composer.json
  *   "scripts": {
- *			"pre-install-cmd": "Yiinitialzr\\Composer\\Callback::preInstall",
- *        	"post-install-cmd": "Yiinitialzr\\Composer\\Callback::postInstall",
- *        	"pre-update-cmd": "Yiinitialzr\\Composer\\Callback::preUpdate",
- *        	"post-update-cmd": "Yiinitialzr\\Composer\\Callback::postUpdate",
- *        	"post-package-install": [
- *            	"Yiinitialzr\\Composer\\Callback::postPackageInstall"
- *        	],
- *        	"post-package-update": [
- *          	"Yiinitialzr\\Composer\\Callback::postPackageUpdate"
- *        	]
+ *            "pre-install-cmd": "Yiinitialzr\\Composer\\Callback::preInstall",
+ *            "post-install-cmd": "Yiinitialzr\\Composer\\Callback::postInstall",
+ *            "pre-update-cmd": "Yiinitialzr\\Composer\\Callback::preUpdate",
+ *            "post-update-cmd": "Yiinitialzr\\Composer\\Callback::postUpdate",
+ *            "post-package-install": [
+ *                "Yiinitialzr\\Composer\\Callback::postPackageInstall"
+ *            ],
+ *            "post-package-update": [
+ *            "Yiinitialzr\\Composer\\Callback::postPackageUpdate"
+ *            ]
  * }
  *
  *
@@ -161,7 +161,6 @@ class Callback
 	{
 		if (!is_file(Config::value('yii.path') . '/yii.php'))
 		{
-			Console::output("%BWarning:%n Yii framework path is wrong at the settings or not yet installed :).\n");
 			// nothing yet installed, return
 			return null;
 		}
@@ -173,9 +172,16 @@ class Callback
 		if (\Yii::app() === null)
 		{
 
-			$env = Console::prompt('Please, enter your environment -ie. "dev | prod | stage": ', array('default' => 'dev'));
-
-			Initializer::buildEnvironmentFiles($env);
+			if (!Config::value('envlock'))
+			{
+				$env = Console::prompt('Please, enter your environment -ie. "dev | prod | stage": ', array('default' => 'dev'));
+				Initializer::buildEnvironmentFiles($env);
+			} else
+			{
+				Console::output("\n%Benv.lock%n file found. No environment request required.\n");
+				Console::output("Note: if you wish to re-do enviroment setting merging, please remove the %Benv.lock%n file " .
+					"from the Yiinitializr %Bconfig%n folder.");
+			}
 
 			Initializer::createRuntimeFolders();
 
@@ -192,5 +198,4 @@ class Callback
 		}
 		return $app;
 	}
-
 }
