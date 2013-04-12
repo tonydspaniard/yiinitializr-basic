@@ -23,13 +23,8 @@ return array(
 		'application.models.*'
 	),
 	'components' => array(
-		'db' => array(
-			'connectionString' => '{CONNECTION_STRING}',
-			'username' => '{USERNAME}',
-			'password' => '{PASSWORD}',
-			'enableProfiling' => YII_DEBUG,
-			'enableParamLogging' => YII_DEBUG,
-			'charset' => 'utf8',
+		'db'=>array(
+			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
 		),
 		'errorHandler' => array(
 			'errorAction' => 'site/error',
