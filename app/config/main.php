@@ -11,8 +11,10 @@
  */
 defined('APP_CONFIG_NAME') or define('APP_CONFIG_NAME', 'main');
 
+use Yiinitializr\Helpers\ArrayX;
+
 // web application configuration
-return CMap::mergeArray(array(
+return XArray::merge(array(
 	'name' => '{APPLICATION NAME}',
 
 	// path aliases

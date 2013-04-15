@@ -9,10 +9,6 @@
  * @copyright 2013 2amigOS! Consultation Group LLC
  * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
  */
-require_once('./app/lib/vendor/yiisoft/yii/framework/yii.php');
+require('./app/lib/vendor/autoload.php');
 
-Yii::setPathOfAlias('Yiinitializr', './app/lib/Yiinitializr');
-
-use Yiinitializr\Helpers\Initializer;
-
-Initializer::create('./app', 'console', array('common', 'env', 'local'))->run();
+Yiinitializr\Helpers\Initializer::create('./app', 'console', array('common', 'env', 'local'))->run();

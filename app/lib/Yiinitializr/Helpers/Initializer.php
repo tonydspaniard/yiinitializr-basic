@@ -61,6 +61,7 @@ class Initializer
 	 */
 	public static function config($configName = 'main', $mergeWith = null)
 	{
+
 		$files = array($configName);
 		$directory = Config::value('yiinitializr.app.directories.config.' . $configName);
 		if (null === $directory)
@@ -143,7 +144,11 @@ class Initializer
 		if(isset($params['php.timezone']))
 			date_default_timezone_set($params['php.timezone']);
 
+
 		date_default_timezone_set($params['php.timezone']);
+
+		if(!class_exists('YiiBase'))
+			require(Config::value('yii.path').'/yii.php');
 
 	}
 
@@ -184,7 +189,7 @@ class Initializer
 
 				if (!file_exists($environment_file))
 				{
-					file_put_contents($environment_file, "<?php\n/**\n * {$env}.php\n */\n\nreturn array(\n);");
+					file_put_contents($environment_file, "<?php\n/**\n * {$environment}.php\n */\n\nreturn array(\n);");
 					@chmod($environment_file, 0644);
 
 					self::output("%gEnvironment configuration file has been created: %r{$environment_file}%n.\n");
@@ -195,7 +200,7 @@ class Initializer
 
 					self::output("Your environment configuration file has been created on {$directory}.\n");
 				} else
-					self::output("'{$directory}/env.php' \n%pfile already exists. No action has been executed.%n");
+					self::output("'{$directory}/env.php'\n%pfile already exists. No action has been executed.%n");
 			}
 		}
 		Config::createEnvironmentLockFile($environment);
@@ -226,9 +231,9 @@ class Initializer
 				@mkdir($runtime, 02777);
 				self::output("Your {$name} folder has been created on {$directory}.");
 			} else
-				self::output("'{$name}'\n%pfolder already exists. No action has been executed.%n");
+				self::output("'{$name}' %pfolder already exists. No action has been executed.%n");
 		}
-		self::output("\n%gRuntime '{$name}'' folders creation process finished.%n");
+		self::output("%gRuntime '{$name}' folders creation process finished.%n");
 	}
 
 	/**
