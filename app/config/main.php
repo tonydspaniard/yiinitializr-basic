@@ -14,7 +14,7 @@ defined('APP_CONFIG_NAME') or define('APP_CONFIG_NAME', 'main');
 use Yiinitializr\Helpers\ArrayX;
 
 // web application configuration
-return XArray::merge(array(
+return ArrayX::merge(array(
 	'name' => '{APPLICATION NAME}',
 
 	// path aliases
