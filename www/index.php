@@ -11,4 +11,8 @@
  */
 require('./../app/lib/vendor/yiisoft/yii/framework/yii.php');
 
-Yiinitializr\Helpers\Initializer::create('./../app', 'main', array('common', 'env', 'local'))->run();
+Yii::setPathOfAlias('Yiinitializr', './../app/lib/Yiinitializr');
+
+use Yiinitializr\Helpers\Initializer;
+
+Initializer::create('./../app', 'main', array('common', 'env', 'local'))->run();
