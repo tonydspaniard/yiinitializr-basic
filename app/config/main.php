@@ -19,7 +19,7 @@ return ArrayX::merge(array(
 
 	// path aliases
 	'aliases' => array(
-		'bootstrap' => 'vendor.yii-twbs.yiistrap',
+		'bootstrap' => 'vendor.2amigos.yiistrap',
 		'yiiwheels' => 'vendor.2amigos.yiiwheels'
 	),
 
