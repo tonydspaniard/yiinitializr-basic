@@ -28,6 +28,10 @@ index
 # yiinitializr env.lock
 /app/lib/Yiinitializr/config/env.lock
 
+# env files and testdrive database
+/app/config/env.php
+/app/data/testdrive.db
+
 # composer
-/common/lib/vendor
+/app/lib/vendor
 composer.lock
