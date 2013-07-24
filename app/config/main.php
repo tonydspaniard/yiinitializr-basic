@@ -14,7 +14,7 @@ defined('APP_CONFIG_NAME') or define('APP_CONFIG_NAME', 'main');
 use Yiinitializr\Helpers\ArrayX;
 
 // web application configuration
-return ArrayX::merge(array(
+return array(
 	'name' => '{APPLICATION NAME}',
 
 	// path aliases
@@ -67,4 +67,4 @@ return ArrayX::merge(array(
 	),
 	// application parameters
 	'params' => array(),
-), require_once('common.php'));
+);
